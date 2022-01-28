@@ -10,6 +10,13 @@ import { useFonts, Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/in
 import { Routes } from './src/routes';
 import theme from './src/theme';
 
+// logs QA
+import * as Sentry from "@sentry/react-native";
+
+Sentry.init({
+  dsn: "https://examplePublicKey@o0.ingest.sentry.io/0",
+});
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     Inter_700Bold,
@@ -29,3 +36,5 @@ export default function App() {
     </GestureHandlerRootView>
   );
 }
+
+export default Sentry.wrap(App);
